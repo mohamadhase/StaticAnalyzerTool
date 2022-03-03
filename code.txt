@@ -4,9 +4,10 @@ class x
 double Calculate( double number, double divisor)
 {
 //This is a    bug    because    divisor can    be zero
-cout<<"";
-double result = number/divisor;
-result = number/divisor;
+cout << "" ;
+int x = 5 ;
+int y = 6 ;
+double result = x-y ;
 int result2 ;
 return result;
 }
