@@ -1,4 +1,4 @@
-class x 
+class x
 {
 };
 double Calculate( double number, double divisor)
@@ -7,9 +7,10 @@ double Calculate( double number, double divisor)
 cout << "" ;
 int x = 5 ;
 int y = 6 ;
-double result = x-y ;
+double result = (x*y)+x);
 int result2 ;
 return result;
+
 }
 int main()
 {
