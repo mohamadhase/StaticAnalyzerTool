@@ -47,6 +47,20 @@ class Data:
                     map(line.startswith, Const._data_type)):
                 self.tokens[line] = {'Type': 'Operation'}
 
+            elif line.startswith('for(') or line.startswith('for ('):
+                self.tokens[line] = {'Type': 'For'}
+            
+            elif line.startswith('while(') or line.startswith('while ('):
+                self.tokens[line] = {'Type': 'While'}
+            
+            elif line.startswith('if(') or line.startswith('if ('):
+                self.tokens[line] = {'Type': 'If'}
+            
+            elif line.startswith('return') :
+                self.tokens[line] = {'Type': 'Return'}
+            elif '(' in line and (line.endswith(');') or line.endswith(') ;')):
+                self.tokens[line] = {'Type': 'calling_finction'}
+
             else:
                 self.tokens[line] = {'Type': 'None'}
 
