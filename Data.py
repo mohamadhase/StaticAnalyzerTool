@@ -62,6 +62,7 @@ class Data:
                 self.tokens[line] = {'Type': 'calling_finction'}
 
             else:
+                
                 self.tokens[line] = {'Type': 'None'}
 
     def declarationToken(self, line: str) -> None:
