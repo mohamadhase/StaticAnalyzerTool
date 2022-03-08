@@ -10,7 +10,7 @@ def main():
     data.tokinizer()
     parameters = Parameters(data.tokens)
 
-    #pprint(Const.variables_value)
+    rsult = parameters.handle_attribute()
 
     # handle more then three parameters
     print('handle_parameters :-')

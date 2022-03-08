@@ -52,6 +52,10 @@ class Data:
                     map(line.startswith, Const._data_type)):
                 self.tokens[line] = {'Type': 'Operation'}
 
+            elif line.split(' ')[0] not in Const._data_type and line.endswith(
+                    ');'):
+                self.tokens[line] = {'Type': 'CallFunction'}
+
             else:
                 self.tokens[line] = {'Type': 'None'}
 
