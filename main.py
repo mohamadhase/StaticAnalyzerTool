@@ -15,7 +15,7 @@ def main():
 
     magic_numbers = MagicNumbers(data.tokens)
     print('handle_magic_numbers :')
-    magic_numbers.implementation(data.tokens)
+    magic_numbers.handle_magic_numbers(data.tokens)
     
     
 if __name__ == "__main__":
