@@ -1,17 +1,21 @@
 class x
 {
 };
-double Calculate( double number, double divisor)
+double Calculate( double number, double divisor, double divisor2, double divisor3)
 {
 //This is a    bug    because    divisor can    be zero
 cout << "" ;
 int x = 5 ;
 int y = 6 ;
+<<<<<<< HEAD
 if (x<0)
 {
 double result = y/x ;
 result  = x/y;
 }
+=======
+double result = (x*y)+x;
+>>>>>>> 1eb54ef87f2b8b90af681939abb0ab188709e003
 int result2 ;
 return result;
 
