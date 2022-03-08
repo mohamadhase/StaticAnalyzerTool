@@ -7,7 +7,11 @@ double Calculate( double number, double divisor)
 cout << "" ;
 int x = 5 ;
 int y = 6 ;
-double result = (x*y)+x);
+if (x<0)
+{
+double result = y/x ;
+result  = x/y;
+}
 int result2 ;
 return result;
 

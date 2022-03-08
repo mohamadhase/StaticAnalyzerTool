@@ -1,6 +1,5 @@
 from Const import Const
 
-
 class Data:
     """
     class for read the data from the txt file and get it ready to be used in other classes
@@ -32,16 +31,26 @@ class Data:
             elif any(map(line.startswith,
                          Const._data_type)) and line.endswith(")"):
                 self.tokens[line] = {"Type": "Function"}
+                self.functionParameters(line)
 
             elif line.startswith("cout <<") or line.startswith("cout<<"):
                 self.tokens[line] = {"Type": "Print"}
+
+
+            elif line.startswith("if") and line.endswith(")"):
+                self.tokens[line] = {"Type": "If"}
+            
+            elif line.__contains__("return "):
+                self.tokens[line] = {"Type": "exit"}
 
             elif any(map(line.startswith,
                          Const._data_type)) and (line.__contains__("=")
                                                  or line.__contains__(";")):
                 self.tokens[line] = {"Type": "Declaration"}
                 self.declarationToken(line)
-
+            
+            elif line.startswith("cin") and line.__contains__(">>"):
+                self.tokens[line] = {"Type": "Input"}
             elif any(map(line.__contains__, Const._operations)) and not any(
                     map(line.startswith, Const._data_type)):
                 self.tokens[line] = {"Type": "Operation"}
@@ -65,3 +74,25 @@ class Data:
             value = eval(value, Const.variables_value)
 
         Const.variables_value[line.split(" ")[1]] = int(value)
+        Const.Variables_status[line.split(" ")[1]] = {"changed":False,"checked":False}
+    def functionParameters(self,line:str)->None:
+        """
+        this function get the variables from the the parameters and store them in the Variables_value dict
+
+        Args:
+            line (str): line tokenized as declaration for a function
+        """
+        first_index = line.index("(")
+        last_index = line.index(")")
+        parameters = line[first_index+1:last_index]
+        if(parameters.count(",")==0):
+            return
+        parameters = parameters.split(",")
+        for parameter in parameters:
+            parameter_name = parameter.split(" ")[-1]
+            Const.variables_value[parameter_name] = 0
+            Const.Variables_status[parameter_name] = {"changed":False,"checked":False,"input":False}
+
+
+            
+

@@ -5,6 +5,8 @@ class Const :
     """
     _data_type=["int","float","double","long","char"]
     _operations = ["+","-","*","/","++","--","*=","-=","/=","+="]
+    _logical_operations=["==",">",">=","<=","<","!","!="]
     variables_value = {}
+    Variables_status={}
 
 
