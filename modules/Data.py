@@ -1,5 +1,5 @@
-from functools import cache
-from Const import Const
+from modules.Const import Const
+from pathlib import Path
 
 
 class Data:
@@ -10,12 +10,17 @@ class Data:
     def __init__(self, file_name):
         '''
         1) read the data from text file 
-        2) split the data into lines and store it in lines variable
+        2) split the data into lines and ssore it in lines variable
         3) initialize tokens dictinary to store tha type of each line in it
         Args:
             file_name (String): the name of text file contains the c++ source code to be checked
         '''
-        self.data = open(file_name).read()
+        try:
+            self.data = open('modules/' + file_name).read()
+        except Exception as e:
+            print('file cannot open :' + str(e))
+            exit()
+
         self.lines = self.data.split('\n')
         self.tokens = {}
 

@@ -1,16 +1,21 @@
-from Const import Const
-from Data import Data
-from Three_parameters import Three_parameters
+from modules.Const import Const
+from modules.Data import Data
+from modules.Parameters import Parameters
+from pprint import pprint
 
 
 def main():
+
     data = Data("code.txt")
     data.tokinizer()
-    print(Const.variables_value)
+    parameters = Parameters(data.tokens)
 
-    three_parameters = Three_parameters(data.tokens)
-    print('handle_parameters :')
-    three_parameters.handle_parameters()
+    #pprint(Const.variables_value)
+
+    # handle more then three parameters
+    print('handle_parameters :-')
+    for function in parameters.handle_three_parameters():
+        print('more than three parameters in this function =>', function)
 
 
 if __name__ == "__main__":
