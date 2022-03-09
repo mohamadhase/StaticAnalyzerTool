@@ -2,6 +2,7 @@ from modules.Const import Const
 from modules.Data import Data
 from modules.Parameters import Parameters
 from modules.MagicNumbers import MagicNumbers
+from modules.UnReachableCode import UnReachableCode
 from pprint import pprint
 
 
