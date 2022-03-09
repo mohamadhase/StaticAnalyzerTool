@@ -37,6 +37,9 @@ class Data:
             elif line.startswith('class'):
                 self.tokens[line] = {'Type': 'Class'}
 
+            elif line.startswith('if '):
+                self.tokens[line] = {'Type': 'if'}
+
             elif any(map(line.startswith,
                          Const._data_type)) and line.endswith(')'):
                 self.tokens[line] = {'Type': 'Function'}
