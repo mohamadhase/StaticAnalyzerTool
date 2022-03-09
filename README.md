@@ -30,8 +30,8 @@ Team members :
 
 * <b>Magic number/string</b> <sup>Yaseen Asaliya</sup>
      <br>the code detect all line that contain number or string such as :
-     <code> <br>
-        if(x == -1) <br>
+     <code> 
+        if(x == -1) 
         if(y == "somthing" <br>
         return "str" <br>
       </code> 
