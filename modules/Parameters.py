@@ -14,6 +14,8 @@ class Parameters:
         self.call_function = []  # every call function in the code
         self.function_calls = {}  # every function with his calls
         self.name_prototype = {}  # every nmae of function with prototype
+        self.result_handle_attribute = []
+        self.result_three_parameters = []
 
         for key, value in tokens.items():
             if value['Type'] == 'Function' and 'main' not in key:  # we don't care about the main function
@@ -26,12 +28,9 @@ class Parameters:
         """function that chaek number of parameters in each function
         and return list of functions that have more than three parameters
         """
-        rsualt = []
         for function in self.functions:
             if ',' in function and function.count(',') > 2:
-                rsualt.append(function)
-
-        return rsualt
+                self.result_three_parameters.append(function)
 
     def handle_attribute(self) -> list:
         """function that chaek order of data types in each function,
@@ -42,7 +41,6 @@ class Parameters:
         """
 
         self.__function_and_calls()
-        valid_value = []
 
         for key in self.function_calls.keys():
             args = key[key.index('(') + 1:key.index(')')].split(
@@ -56,7 +54,7 @@ class Parameters:
             if not self.__check_data_type_order(
                     data_type_args
             ):  # check if function with correct order of data type
-                valid_value.append(
+                self.result_handle_attribute.append(
                     ('order data type in function is not correct', key))
                 continue
 
@@ -68,7 +66,7 @@ class Parameters:
                 if len_data_type == 1:
                     if not (valus_in_call[0].replace(
                             ' ', '').isdecimal()):  # check is intager number
-                        valid_value.append(
+                        self.result_handle_attribute.append(
                             ('1 this call is not correct ', call))
 
                 elif len_data_type == 2:
@@ -76,7 +74,7 @@ class Parameters:
                             ' ', '').isdecimal()  # check is intager number
                             and valus_in_call[0].count('"')
                             == 2):  # check if string value
-                        valid_value.append(
+                        self.result_handle_attribute.append(
                             ('2 this call is not correct', call))
 
                 elif len_data_type >= 3:
@@ -89,12 +87,13 @@ class Parameters:
                                     valus_in_call[2:])
                             )  # check if all ends argumant is char values
                             ):
-                        valid_value.append(
+                        self.result_handle_attribute.append(
                             ('3> this call is not correct', call))
                 else:
-                    valid_value.append(('this call is not correct', call))
+                    self.result_handle_attribute.append(
+                        ('this call is not correct', call))
 
-        return valid_value
+        return self.result_handle_attribute
 
     def __function_and_calls(self) -> None:
         """filter name of the function and put every function with his calls
