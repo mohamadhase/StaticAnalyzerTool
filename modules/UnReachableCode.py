@@ -1,6 +1,4 @@
-from tkinter.messagebox import NO
-from Const import Const
-from Data import Data
+from modules.Data import Data
 
 
 class UnReachableCode:
@@ -20,7 +18,7 @@ class UnReachableCode:
         #this attribute contains each line marked as unreachable code
         self.result = []
 
-    def codeCutter(self):
+    def body_of_functions(self):
         """
         this function responsible for get the body of each function and store it in self.code_block
         """
@@ -50,34 +48,11 @@ class UnReachableCode:
                 else:
                     if_counter -= 1
 
-    def codeTrace(self)->None:
+    def handle_if_return(self) -> None:
         """
         this function should read the code line by line and detect any line
-        will be unreachable and store the result in self.result
+        will be unreachable coused by  return inside if
         """
-
-        ## return alone handle
-        for block in self.code_block:
-            return_detected = False
-            Number_of_blocks = 0
-
-            for line in block.split("\n"):
-
-                if return_detected == True:
-                    if line not in self.result:
-                        self.result.append(line)
-
-                if line.__contains__("return ") and Number_of_blocks == 0:              
-                    return_detected = True
-
-                if line.__contains__("if") or line.__contains__("else"):
-                    Number_of_blocks += 1
-
-                if line.__contains__("}"):
-                    Number_of_blocks -= 1
-
-
-        #handle if
         for block in self.code_block:
 
             if_else_return = []
@@ -91,7 +66,7 @@ class UnReachableCode:
             for line in block.split("\n"):
 
                 if status == "none_reachable":
-                    
+
                     if line not in self.result:
                         self.result.append(line)
 
@@ -107,7 +82,7 @@ class UnReachableCode:
 
                     if last == True and line.__contains__(
                             "}") and if_count == 0:
-                            
+
                         if all(if_else_return):
                             status = "none_reachable"
 
@@ -124,44 +99,71 @@ class UnReachableCode:
                         if if_count > 0:
                             if_count -= 1
 
-                    if line.__contains__("else ") and not line.__contains__(
+                    if line.__contains__("else") and not line.__contains__(
                             "else if") and if_count == 0:
                         last = True
 
-            #handle same if
+    def handle_same_logic(self) -> None:
+        """
+        this function should read the code line by line and detect any line
+        will be unreachable coused by same logic if  
+        """
+        for block in self.code_block:
 
-            for block in self.code_block:
+            all_if_conditions = []
+            ifs_returned = []
+            in_if = False
+            status = ""
 
-                all_if_conditions = []
-                ifs_returned = []
-                in_if = False
-                status = ""
+            for line in block.split("\n"):
 
-                for line in block.split("\n"):
+                if status == "Non reachable":
 
-                    if status == "Non reachable":
+                    if line not in self.result:
+                        self.result.append(line)
 
-                        if line not in self.result:
-                            self.result.append(line)
+                    if line.__contains__("}"):
+                        status = ""
 
-                        if line.__contains__("}"):
-                            status = ""
+                if (line.__contains__("if ")):
+                    in_if = True
+                    condition = line.split(" ")[-1]
 
-                    if (line.__contains__("if ")):
-                        in_if = True
-                        condition = line.split(" ")[-1]
+                    if condition in all_if_conditions:
+                        index = all_if_conditions.index(condition)
 
-                        if condition in all_if_conditions:
-                            index = all_if_conditions.index(condition)
+                        if (ifs_returned[index] == True):
+                            status = "Non reachable"
 
-                            if (ifs_returned[index] == True):
-                                status = "Non reachable"
+                    else:
+                        all_if_conditions.append(condition)
 
-                        else:
-                            all_if_conditions.append(condition)
-                            
-                    if (line.__contains__("return ") and in_if == True):
-                        ifs_returned.append(True)
+                if (line.__contains__("return ") and in_if == True):
+                    ifs_returned.append(True)
 
-                    if (line.__contains__("}")):
-                        in_if = False
+                if (line.__contains__("}")):
+                    in_if = False
+
+    def handle_alone_return(self) -> None:
+        """
+        this function should read the code line by line and detect any line
+        will be unreachable coused by free return 
+        """
+        for block in self.code_block:
+            return_detected = False
+            Number_of_blocks = 0
+
+            for line in block.split("\n"):
+
+                if return_detected == True:
+                    if line not in self.result:
+                        self.result.append(line)
+
+                if line.__contains__("return ") and Number_of_blocks == 0:
+                    return_detected = True
+
+                if line.__contains__("if") or line.__contains__("else"):
+                    Number_of_blocks += 1
+
+                if line.__contains__("}"):
+                    Number_of_blocks -= 1
