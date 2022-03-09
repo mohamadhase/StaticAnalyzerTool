@@ -30,10 +30,10 @@ Team members :
 
 * <b>Magic number/string</b> <sup>Yaseen Asaliya</sup>
      <br>the code detect all line that contain number or string such as :
-     <code>
-        if(x == -1)
-        if(y == "somthing"
-        return "str"
+     <code> <br>
+        if(x == -1) <br>
+        if(y == "somthing" <br>
+        return "str" <br>
       </code> 
       ,and it will <br>
      be check the magic value if it not initial value for a variable <br>
