@@ -32,7 +32,7 @@ class Parameters:
             if ',' in function and function.count(',') > 2:
                 self.result_three_parameters.append(function)
 
-    def handle_attribute(self) -> list:
+    def handle_attribute(self):
         """function that chaek order of data types in each function,
         and check value passed in the call each function
 
@@ -54,8 +54,7 @@ class Parameters:
             if not self.__check_data_type_order(
                     data_type_args
             ):  # check if function with correct order of data type
-                self.result_handle_attribute.append(
-                    ('order data type in function is not correct', key))
+                self.result_handle_attribute.append(key)
                 continue
 
             for call in calls:
@@ -66,16 +65,14 @@ class Parameters:
                 if len_data_type == 1:
                     if not (valus_in_call[0].replace(
                             ' ', '').isdecimal()):  # check is intager number
-                        self.result_handle_attribute.append(
-                            ('1 this call is not correct ', call))
+                        self.result_handle_attribute.append(call)
 
                 elif len_data_type == 2:
                     if not (valus_in_call[0].replace(
                             ' ', '').isdecimal()  # check is intager number
                             and valus_in_call[0].count('"')
                             == 2):  # check if string value
-                        self.result_handle_attribute.append(
-                            ('2 this call is not correct', call))
+                        self.result_handle_attribute.append(call)
 
                 elif len_data_type >= 3:
                     if not (valus_in_call[0].replace(
@@ -87,13 +84,7 @@ class Parameters:
                                     valus_in_call[2:])
                             )  # check if all ends argumant is char values
                             ):
-                        self.result_handle_attribute.append(
-                            ('3> this call is not correct', call))
-                else:
-                    self.result_handle_attribute.append(
-                        ('this call is not correct', call))
-
-        return self.result_handle_attribute
+                        self.result_handle_attribute.append(call)
 
     def __function_and_calls(self) -> None:
         """filter name of the function and put every function with his calls
