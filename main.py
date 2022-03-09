@@ -10,12 +10,9 @@ def main():
     data.tokinizer()
     parameters = Parameters(data.tokens)
 
-    #pprint(Const.variables_value)
+    parameters.handle_attribute()
 
     # handle more then three parameters
-    print('handle_parameters :-')
-    for function in parameters.handle_three_parameters():
-        print('more than three parameters in this function =>', function)
 
 
 if __name__ == "__main__":
