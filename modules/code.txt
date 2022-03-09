@@ -1,0 +1,23 @@
+class x
+{
+};
+double Calculate( int number, string divisor, char divisor2, char divisor3)
+{
+//This is a bug because divisor can be zero
+cout << "" ;
+int x = 5 ;
+int y = 6 ;
+double result = (x*y)+x;
+int result2 ;
+return result;
+
+}
+bool Check( int status, string name, char startChar)
+{
+}
+int main()
+{
+Calculate(1, "ddd", 'R', 'S');
+Check(1, "Data", 'R');
+Check(1.5, 'D', "Data");
+}

@@ -1,4 +1,4 @@
-from Const import Const
+from modules.Const import Const
 
 class MagicNumbers:
     result = []
