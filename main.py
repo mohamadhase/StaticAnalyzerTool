@@ -1,6 +1,8 @@
+
 from modules.Const import Const
 from modules.Data import Data
 from modules.Parameters import Parameters
+from modules.MagicNumbers import MagicNumbers
 from pprint import pprint
 
 
@@ -14,6 +16,9 @@ def main():
 
     # handle more then three parameters
 
-
+    magic_numbers = MagicNumbers(data.tokens)
+    print('handle_magic_numbers :')
+    magic_numbers.handle_magic_numbers(data.tokens)
+        
 if __name__ == "__main__":
     main()

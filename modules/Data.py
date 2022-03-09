@@ -1,5 +1,7 @@
+
 from modules.Const import Const
 from pathlib import Path
+
 
 
 class Data:
@@ -57,6 +59,7 @@ class Data:
                 self.tokens[line] = {'Type': 'CallFunction'}
 
             else:
+
                 self.tokens[line] = {'Type': 'None'}
 
     def declarationToken(self, line: str) -> None:
