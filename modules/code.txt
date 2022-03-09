@@ -1,27 +1,6 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
-int x = 5 ;
-if (status == -1)
-{
-
-}
-else if (status == 1)
-{
-
-}
-else if (status=="yes")
-{
-
-}
-return 1;
-Check(1, "Data", 'R');
-Check(1.5, 'D', "Data");
-
-}
-
 bool Check( int status, string name, char startChar)
 {
 }
@@ -48,4 +27,24 @@ return "Pass1";
 }
 cout<<"Exit2"; 
 return "Pass2";
+}
+int main()
+{
+int x = 5 ;
+if (status == -1)
+{
+
+}
+else if (status == 1)
+{
+
+}
+else if (status=="yes")
+{
+
+}
+return 1;
+Check(1, "Data", 'R');
+Check(1.5, 'D', "Data");
+
 }
