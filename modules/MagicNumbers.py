@@ -34,7 +34,9 @@ class MagicNumbers:
             elif any(map(line.startswith, Const._data_type)) and any(map(line.__contains__, Const._operations)):
                 containMagic = self.contain_digit(line)
                 
-            
+            if line.__contains__('main'):
+                containMagic = False
+                
             if containMagic == True:
                 self.result.append(line)
                 containMagic == False
