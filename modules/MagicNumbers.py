@@ -36,7 +36,7 @@ class MagicNumbers:
                 
             if line.__contains__('main'):
                 containMagic = False
-                
+            
             if containMagic == True:
                 self.result.append(line)
                 containMagic == False

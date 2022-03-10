@@ -31,7 +31,7 @@ return "Pass2";
 int main()
 {
 int x = 5 ;
-if (status == -1)
+if (status == -3)
 {
 
 }
