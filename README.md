@@ -47,7 +47,10 @@ and we have the call of this function <code> Check(1.5, 'D', "Data");</code> the
 
 
 * <b> more than three parameters </b> <sup>Motaz Hashhoush</sup> <br>
-Each function must contain no more than three parameters, that's why we check the number of parameters
+Each function must contain no more than three parameters, <br> 
+that's why we check the number of parameters by the number of commas "," <br>
+if the number of commas is equal to two, then this means that we have three parameters, <br>
+and if the number of commas is greater than two, this indicates that we have more than three parameters and it is not permissible .
 
 
 </br>
