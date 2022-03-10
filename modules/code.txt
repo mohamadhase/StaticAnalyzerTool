@@ -19,7 +19,7 @@ return "N/A";
 } 
 else 
 {
-if (status==0)
+if (status==1)
 {
 cout<<"Exit1";
 }
@@ -31,11 +31,11 @@ return "Pass2";
 int main()
 {
 int x = 5 ;
-if (status == -1)
+if (status == -3)
 {
 
 }
-else if (status == 1)
+else if (status == 2)
 {
 
 }
