@@ -39,10 +39,15 @@ Team members :
      for example or any case that apply the magic number it will be stored <br>
      in result list to print it later.
 
-* <b>Do the attributes</b> <sup>Motaz Hashhoush</sup>
+* <b>Do the attributes</b> <sup>Motaz Hashhoush</sup> <br>
+The order of the data type is checked in each prototype function and the order should be like this : <code> integer, string, character </code>. <br>
+It also checks the values that are sent when this function is called so that they must be on the same data type parameters as in the function.  <br>
+Example. we have this prototype function <code> bool Check( int status, string name, char startChar) </code> <br>
+and we have the call of this function <code> Check(1.5, 'D', "Data");</code> the call violates the data type standards in the function .
 
 
-* <b> more than three parameters </b> <sup>Motaz Hashhoush</sup>
+* <b> more than three parameters </b> <sup>Motaz Hashhoush</sup> <br>
+Each function must contain no more than three parameters, that's why we check the number of parameters
 
 
 </br>
