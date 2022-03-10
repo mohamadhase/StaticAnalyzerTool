@@ -4,7 +4,7 @@ using namespace std;
 bool Check( int status, string name, char startChar)
 {
 }
-double motaz( int status, string name, char startChar, float yaseen)
+double function( int status, string name, char startChar, float parameter)
 {
 
 }
@@ -46,5 +46,6 @@ else if (status=="yes")
 return 1;
 Check(1, "Data", 'R');
 Check(1.5, 'D', "Data");
+Calculate(12, "divisor", 'd', 89);
 
 }
